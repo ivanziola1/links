@@ -18,9 +18,16 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
+<% if ENV['MONGOLAB_MAUVE_URI'] %>
+<% uri = URI.parse(ENV['MONGOLAB_MAUVE_URI']) %>
 production:
-  clients:
+  <<: *defaults
+  sessions:
     default:
-     uri: <%= ENV['MONGOLAB_MAUVE_URI'] %>.
-     options:
-       connect_timeout: 15
+      <<: *default_session
+      database: <%= uri.path.sub('/','') %>
+      username: <%= uri.user %>
+      password: <%= uri.password %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
+<% end %>
