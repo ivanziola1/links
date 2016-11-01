@@ -1,0 +1,25 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      = link_to 'Links', root_url, class: 'navbar-brand'
+    %ul.nav.navbar-nav
+      - if can? :access, :rails_admin
+        %li
+          = link_to 'Admin', rails_admin_path
+      %li
+        = link_to 'Taggs', tags_path if user_signed_in?
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li
+          = link_to(destroy_user_session_path, method: :delete) do
+            = content_tag(:span, '', class: 'glyphicon glyphicon-log-out')
+            Log out
+      - else
+        %li
+          = link_to(new_user_registration_path) do
+            = content_tag(:span, '', class: 'glyphicon glyphicon-user')
+            Sign up
+        %li
+          = link_to(new_user_session_path) do
+            = content_tag(:span, '', class: 'glyphicon glyphicon-log-in')
+            Sign in

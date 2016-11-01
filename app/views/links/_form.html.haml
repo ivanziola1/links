@@ -1,0 +1,8 @@
+= simple_form_for @link do |f|
+  .row
+    .form-group.col-xs-6
+      = f.input :hyperlink
+    .form-group.col-xs-6
+      = f.input :labels, label: 'Tags separated with comma'
+  = f.input :description,  as: :text, input_html: {rows: '6'}
+  = f.button :submit, class: "btn btn-success"

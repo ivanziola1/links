@@ -1,0 +1,6 @@
+= render 'form', link: @link
+- if !@links.nil?
+  = render partial: 'links', locals: {links: @links}
+- else
+  %strong You haven't added any links
+%br/

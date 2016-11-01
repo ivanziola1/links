@@ -1,0 +1,10 @@
+- @tags.each do |tag|
+  = link_to tag.name.strip, tag_path(tag.name.strip), class: 'btn btn-primary'
+  /
+    <haml_silent>
+    </haml_silent>
+    <span class="badge"><haml_silent></haml_silent></span>
+%br/
+%hr/
+- unless @links.nil?
+  = render partial: 'links/links', locals: {links: @links}

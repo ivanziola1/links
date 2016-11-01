@@ -1,0 +1,26 @@
+development:
+  # Configure available database clients. (required)
+  clients:
+    # Defines the default client. (required)
+    default:
+      database: links_development
+      hosts:
+        - localhost:27017
+      options:
+  options:
+test:
+  clients:
+    default:
+      database: links_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+production:
+  clients:
+    default:
+     uri: <%= ENV['MONGODB_URI'] %>.
+     options:
+       connect_timeout: 15

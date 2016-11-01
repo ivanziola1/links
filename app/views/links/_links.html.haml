@@ -1,0 +1,15 @@
+- links.each do |link|
+  %h3
+    = link_to link.hyperlink, link_for(link.hyperlink), target: '_blank'
+  %p
+    %span.glyphicon.glyphicon-time
+    Added on
+    \#{link.created_at.strftime("%d/%m/%Y %H:%M")}
+  - if link.tags.any?
+    %h4
+      - link.tags.each do |tag|
+        = link_to tag.name.strip, tag_path(tag.name.strip), class: 'btn btn-primary'
+  %hr/
+  %p
+    = link.description
+  %hr/
