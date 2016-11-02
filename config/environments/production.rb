@@ -80,14 +80,14 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
-
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.host }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    tls: true,
+    enable_starttls_auto: true,
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    authentication: :login,
+    authentication: :plain,
     user_name: Rails.application.secrets.email_login,
     password: Rails.application.secrets.email_password
   }
