@@ -34,7 +34,6 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan'
 gem 'simple_form', '~> 3.3.1'
-gem 'rinku'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
